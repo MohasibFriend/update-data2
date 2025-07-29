@@ -1,0 +1,42 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 3,
+  "name": "Mohasib Friend ETA PDF & EXCEL Tool",
+  "description": "Egyptian eTax - eInvoice PDF & EXCEL Tool, save all eInvoices with one click and export an excel sheet with all the needed data",
+  "version": "27",
+  "content_scripts": [
+    {
+      "matches": [ "*://invoicing.eta.gov.eg/*" ],
+      "js": [
+        "scripts/extensionInjector.min.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "scripts/extensionBase.min.js",
+        "scripts/jszip.min.js",
+        "scripts/polyfill.js",
+        "scripts/exceljs/exceljs.min.js",
+        "css/style.css",
+        "css/bootstrap.min.css"
+      ],
+      "matches": [ "*://invoicing.eta.gov.eg/*" ]
+    }
+  ],
+  "host_permissions": [
+    "https://invoicing.eta.gov.eg/"
+  ],
+  "icons": {
+    "16": "logo16.png",
+    "24": "logo24.png",
+    "48": "logo48.png",
+    "128": "logo128.png"
+  }
+}
